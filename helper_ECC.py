@@ -34,4 +34,10 @@ def expmod(block, exponent, m):
         return (b * expmod((b**2) % m, (exponent - 1) // 2, m)) % m
     
 def sqrt(n, p):
-    return expmod(n, (p + 1) // 4, p)
+    x = expmod(n, (p + 1) // 4, p)
+    if (x**2) % p == n:
+        return x
+    x = (p-x) % p
+    if (x**2) % p == n:
+        return x
+    return -1
